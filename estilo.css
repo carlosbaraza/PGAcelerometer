@@ -1,0 +1,66 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans',Helvetica,sans-serif;
+	min-width: 0;
+}
+
+h1 {
+
+	text-align:center;
+	display: block;
+	width:100%;
+	margin: 0;
+	padding: 5px 0;
+	
+	line-height: 1.2;
+	background-color: rgb(191,34,32);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.15, rgb(124,21,14)),
+		color-stop(0.8, rgb(191,34,32))
+	);
+	background-image: -moz-linear-gradient(
+		center bottom,
+		rgb(124,21,14) 15%,
+		rgb(191,34,32) 80%
+	);
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.2);
+	border-bottom: 1px solid black;
+	font-size: 1.2em;
+	color: #fff;
+	font-variant: small-caps;
+}
+
+#container {
+	padding: 0;
+	width: 100%;
+	display: block;
+}
+
+p {
+	margin: 20px 10px;
+	font-size: 8pt;
+}
+
+#circuloExt {
+	width: 100%;
+
+}
+
+#circuloInt {
+	width: 20%;
+	position: absolute;
+	margin: -10% -10%;
+	left:21.6%;
+	top:21.6%;
+	z-index:1;
+}
+
+#contCirculo {
+	position: relative;
+}

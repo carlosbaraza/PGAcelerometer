@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Acceleration Example</title>
+    
+    <link rel=StyleSheet href="estilo.css" type="text/css"/>
+
+    <script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for Cordova to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+        var timer = setInterval(function(){navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);},500);
+    }
+    
+
+    // onSuccess: Get a snapshot of the current acceleration
+    //
+    function onSuccess(acceleration) {
+    	var acelX = document.getElementById("acelX");
+    	acelX.innerHTML = 'Acceleración X: ' + acceleration.x + ' m/s2';
+    	
+    	var acelY = document.getElementById("acelY");
+    	acelY.innerHTML = 'Acceleración Y: ' + acceleration.y + ' m/s2';
+    	
+    	var acelZ = document.getElementById("acelZ");
+    	acelZ.innerHTML = 'Acceleración Z: ' + acceleration.z + ' m/s2';
+    	
+    	var angulo = -Math.atan2(acceleration.x,acceleration.y);// + Math.PI / 2;
+    	var radio = Math.cos(Math.atan(acceleration.z/Math.sqrt(Math.pow(acceleration.x,2) + Math.pow(acceleration.y,2))))*40;
+    	var posY = Math.cos(angulo)*radio + 50;
+    	var posX = Math.sin(angulo)*radio + 50;
+    	
+    	var circuloInt = document.getElementById("circuloInt");
+    	circuloInt.style.top = posY + '%';
+    	circuloInt.style.left = posX + '%';
+    	
+    	// alert('Acceleration X: ' + acceleration.x + '\n' +
+        //      'Acceleration Y: ' + acceleration.y + '\n' +
+         //     'Acceleration Z: ' + acceleration.z + '\n' +
+         //     'Timestamp: '      + acceleration.timestamp + '\n');
+    }
+
+    // onError: Failed to get the acceleration
+    //
+    function onError() {
+        alert('onError!');
+    }
+
+    </script>
+  </head>
+  <body>
+  	<h1>Acelerómetro</h1>
+    <div id="container">
+	    <p id="acelX">Aceleración X: </p>
+	    <p id="acelY">Aceleración Y: </p>
+	    <p id="acelZ">Aceleración Z: </p>
+	    <div id="contCirculo">
+	    	<img alt="circuloExt" src="circuloExt.png" id="circuloExt">
+	    	<img alt="circuloInt" src="circuloInt.png" id="circuloInt">
+	    </div> 
+	</div>
+  </body>
+</html>
